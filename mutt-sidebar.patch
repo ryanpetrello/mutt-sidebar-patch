@@ -1096,7 +1096,7 @@ new file mode 100644
 index 0000000..6098c2a
 --- /dev/null
 +++ b/sidebar.c
-@@ -0,0 +1,333 @@
+@@ -0,0 +1,319 @@
 +/*
 + * Copyright (C) ????-2004 Justin Hibbits <jrh29@po.cwru.edu>
 + * Copyright (C) 2004 Thomer M. Gil <mutt@thomer.com>
@@ -1193,23 +1193,9 @@ index 0000000..6098c2a
 +	i = strlen(box);
 +	strncpy( entry, box, i < (SidebarWidth - delim_len + 1) ? i : (SidebarWidth - delim_len + 1) );
 +
-+        if (size == -1)
-+                sprintf(entry + SidebarWidth - delim_len - 3, "?");
-+        else if ( new ) {
-+          if (flagged > 0) {
 +              sprintf(
-+		        entry + SidebarWidth - delim_len - 5 - quick_log10(size) - quick_log10(new) - quick_log10(flagged),
-+		        "% d(%d)[%d]", size, new, flagged);
-+          } else {
-+              sprintf(
-+                      entry + SidebarWidth - delim_len - 3 - quick_log10(size) - quick_log10(new),
-+                      "% d(%d)", size, new);
-+          }
-+        } else if (flagged > 0) {
-+              sprintf( entry + SidebarWidth - delim_len - 3 - quick_log10(size) - quick_log10(flagged), "% d[%d]", size, flagged);
-+        } else {
-+              sprintf( entry + SidebarWidth - delim_len - 1 - quick_log10(size), "% d", size);
-+        }
++                      entry + SidebarWidth - delim_len - 3 - quick_log10(new),
++                      "% (%d)", new);
 +	return entry;
 +}
 +
